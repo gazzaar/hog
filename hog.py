@@ -195,9 +195,11 @@ def always_roll(n):
     3
     """
     assert n >= 0 and n <= 10
+
     # BEGIN PROBLEM 6
-    def strategy(score1,score2):
+    def strategy(score1, score2):
         return n
+
     return strategy
 
     # END PROBLEM 6
@@ -230,7 +232,18 @@ def is_always_roll(strategy, goal=GOAL):
     False
     """
     # BEGIN PROBLEM 7
-    "*** YOUR CODE HERE ***"
+    score1 = 0
+    score2 = 0
+    first_roll = strategy(score1, score2)
+    while score1 < goal:
+        score2 = 0
+        while score2 < goal:
+            num_rolls = strategy(score1, score2)
+            if 0 <= num_rolls <= 10 and num_rolls != first_roll:
+                return False
+            score2 += 1
+        score1 += 1
+    return True
     # END PROBLEM 7
 
 
